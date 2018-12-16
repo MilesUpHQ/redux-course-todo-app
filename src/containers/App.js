@@ -4,6 +4,7 @@ import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 import axios from "axios";
 import { connect } from "react-redux";
+import actions from "../actions/todo";
 
 class App extends React.Component {
   render() {
@@ -26,10 +27,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addTodo: item => {
-      dispatch({ type: "ADD_TODO", item: item });
+      dispatch(actions.addTodo(item));
     },
     deleteTodo: item => {
-      dispatch({ type: "DELETE_TODO", item: item });
+      dispatch(actions.deleteTodo(item));
     }
   };
 };
