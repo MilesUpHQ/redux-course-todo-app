@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./containers/App";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers/todos";
 
@@ -24,7 +24,20 @@ const logger = store => {
 //     };
 //   };
 // };
-const store = createStore(reducer, applyMiddleware(logger));
+
+const composeEnhancers =
+  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+      })
+    : compose;
+
+const enhancer = composeEnhancers(
+  applyMiddleware(logger)
+  // other store enhancers if any
+);
+
+const store = createStore(reducer, enhancer);
 
 ReactDOM.render(
   <Provider store={store}>
