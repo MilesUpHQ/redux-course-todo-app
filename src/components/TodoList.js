@@ -6,7 +6,7 @@ class TodoList extends React.Component {
   };
 
   handleDelete = item => {
-    this.props.deleteTodo(item.id);
+    this.props.deleteTodo(item);
   };
   render() {
     if (!this.props.items.length > 0) {
@@ -16,8 +16,8 @@ class TodoList extends React.Component {
       <ul className="list-group">
         {this.props.items.map(item => {
           return (
-            <li key={item.id} className="list-group-item">
-              <span onClick={this.markComplete}>{item.title}</span>
+            <li key={item} className="list-group-item">
+              <span onClick={this.markComplete}>{item}</span>
               <span
                 onClick={this.handleDelete.bind(this, item)}
                 className="float-right"

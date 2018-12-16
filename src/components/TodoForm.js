@@ -15,11 +15,11 @@ class TodoForm extends React.Component {
   };
 
   handleClick = event => {
+    event.preventDefault();
     this.props.addTodo(this.state.inputText);
     this.setState({
       inputText: ""
     });
-    event.preventDefault();
   };
   render() {
     return (
