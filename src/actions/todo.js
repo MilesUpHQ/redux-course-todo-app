@@ -1,4 +1,5 @@
 export const addTodo = item => {
+  item = item.toUpperCase();
   return {
     type: "ADD_TODO",
     item: item
