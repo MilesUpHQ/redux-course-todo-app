@@ -7,6 +7,10 @@ import { connect } from "react-redux";
 import actions from "../actions/todo";
 
 class App extends React.Component {
+  componentDidMount() {
+    console.log(this.props);
+    this.props.getTodos();
+  }
   render() {
     return (
       <div>
@@ -26,11 +30,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    addTodo: item => {
-      dispatch(actions.addTodo(item));
-    },
+    getTodos: () => dispatch(actions.requestTodos()),
+    addTodo: item => dispatch(actions.requestAddTodo(item)),
     deleteTodo: item => {
-      dispatch(actions.deleteTodo(item));
+      dispatch(actions.requestDeleteTodo(item));
     }
   };
 };

@@ -16,8 +16,8 @@ class TodoList extends React.Component {
       <ul className="list-group">
         {this.props.items.map(item => {
           return (
-            <li key={item} className="list-group-item">
-              <span onClick={this.markComplete}>{item}</span>
+            <li key={item.id} className="list-group-item">
+              <span onClick={this.markComplete}>{item.title}</span>
               <span
                 onClick={this.handleDelete.bind(this, item)}
                 className="float-right"

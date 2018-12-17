@@ -4,6 +4,7 @@ import App from "./containers/App";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers/todos";
+import thunk from "redux-thunk";
 
 const logger = store => {
   return next => {
@@ -33,7 +34,7 @@ const composeEnhancers =
     : compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(logger)
+  applyMiddleware(logger, thunk)
   // other store enhancers if any
 );
 
